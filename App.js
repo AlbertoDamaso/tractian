@@ -10,6 +10,9 @@ import { Padauk_400Regular, Padauk_700Bold } from '@expo-google-fonts/padauk';
 
 import { Routes } from "./src/routes";
 
+// console.disableYellowBox = true;
+console.ignoredYellowBox = ["Warning: Each", "Warning: Failed"];
+
 export default function App(){
   const [fontsLoaded, error] = useFonts({
     Padauk_400Regular,
