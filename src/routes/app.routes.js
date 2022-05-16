@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Feather, MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 import { Home } from '../screens/Home';
 import { CustomDrawer } from '../components/CustomDrawer';
@@ -17,12 +17,12 @@ export function AppRoutes() {
         headerShown: false,
         drawerActiveTintColor: theme.colors.dark,
         drawerActiveBackgroundColor: theme.colors.primary,
-        drawerInactiveBackgroundColor: theme.colors.secundaryMais,
+        drawerInactiveBackgroundColor: theme.colors.secondaryMais,
         drawerInactiveTintColor: theme.colors.light,
 
         drawerStyle:{
           width: '70%',
-          backgroundColor: theme.colors.secundaryMais
+          backgroundColor: theme.colors.secondaryMais,
         },
 
         drawerItemStyle:{
@@ -43,8 +43,8 @@ export function AppRoutes() {
         component={Home}
         options={{
           drawerIcon: ({color}) => (
-            <MaterialIcons
-              name="add-shopping-cart"
+            <FontAwesome5
+              name="home"
               color={color}
               size={24}
             />

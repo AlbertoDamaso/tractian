@@ -4,8 +4,8 @@ export const theme = {
       primaryMais: '#0659dd',
       primayMenos: '#8eb7f9',
       
-      secondary: '#1e3a8a', 
-      secondaryMenos: '#081b55',
+      secondary: '#1E3A8A', 
+      secondaryMais: '#081b55',
      
       dark: '#303030',
       light: '#FFFFFF',

@@ -1,8 +1,8 @@
 import React from 'react';
-
 import {
   View
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { Logo } from '../../components/Logo';
 import { Input } from '../../components/Input';
@@ -10,6 +10,13 @@ import { Button } from '../../components/Button';
 import { styles } from './styles';
 
 export function SignIn() {
+  const navigation = useNavigation();
+
+  function handleSignIn(){
+    navigation.navigate('AppRoutes')
+    // signIn(email) 
+  }
+
   return (
     <View style={styles.container}>
       <Logo/>
@@ -25,7 +32,7 @@ export function SignIn() {
       />
 
       <Button
-        // onPress={(handleSignUp)}
+        onPress={(handleSignIn)}
         title={"Entrar"}
         activeOpacity={0.7}
       />
