@@ -20,9 +20,9 @@ export function Home() {
   return (
     <View style={styles.container}>
       <SafeAreaView>
-        {/*Se tiver mais de um ScrollView intale a biblioteca deste a baixo*/}
         <ScrollView>
           <AreaHeader
+            isDrawer={1}
             empresa={"Tractian"}
             unidade={"Unidade1"}
           />
