@@ -28,6 +28,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "testeteste",
+    "githubUrl": "https://github.com/AlbertoDamaso/tractian.git"
   }
 }
