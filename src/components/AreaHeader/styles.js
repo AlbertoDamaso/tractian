@@ -4,7 +4,7 @@ import { theme } from '../../global/styles/theme';
 export const styles = StyleSheet.create({
     areaHeader: {
         width: '100%',
-        height: 104,
+        height: 134,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: theme.colors.primary,

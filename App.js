@@ -8,6 +8,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import { Padauk_400Regular, Padauk_700Bold } from '@expo-google-fonts/padauk';
 
+import AuthProvider from './src/contexts/auth';
 import { Routes } from "./src/routes";
 
 // console.disableYellowBox = true;
@@ -25,12 +26,14 @@ export default function App(){
 
   return(
     <NavigationContainer>
-      <StatusBar
-      barStyle="light-content"
-      backgroundColor="transparent"
-      translucent
-      />
-      <Routes/>
+      <AuthProvider>
+        <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+        />
+        <Routes/>
+      </AuthProvider>
     </NavigationContainer>
   )
 

@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
     height: 60,
     borderWidth:1,    
     alignSelf:'center',
+    justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     marginTop: 65,
@@ -17,7 +18,7 @@ export const styles = StyleSheet.create({
   text: {
     flex: 1,
     fontSize: 28,
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.colors.light,
     fontFamily: theme.fonts.text,
   },

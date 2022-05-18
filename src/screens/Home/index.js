@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View,
   SafeAreaView
@@ -8,14 +8,24 @@ import { ScrollView } from 'react-native-virtualized-view';
 import { AreaHeader } from '../../components/AreaHeader';
 import { ListAssets } from '../../components/ListAssets';
 import { styles } from './styles';
+import api from '../../services/api';
+// import { AuthContext } from '../../contexts/auth';
 
 export function Home() {
+  // const { user } = useContext(AuthContext);
+  // const unitId = user && user.unitId;
+  const [motor, setMotor] = useState(''); 
 
-  const [motor, setMotor] = useState([
-    {key: '1', title: "Motor H13D-1", model: "motor", status: "Em Alerta", sensor:"GSJ1535"},
-    {key: '2', title: "Motor H12D-1", model: "motor", status: "Em Alerta", sensor:"IBS1636"},
-    {key: '3', title: "Motor H12D-3", model: "motor", status: "Em Operação", sensor:"JVC1134"},
-  ]); 
+  async function listMotor(){
+
+    try{
+      const resp = await api.get('/assets')//`/assets/${unitId}`
+      setMotor(resp.data)
+    }catch(error){
+      alert('ERROR: '+ error);
+    }
+  }
+  listMotor();
 
   return (
     <View style={styles.container}>

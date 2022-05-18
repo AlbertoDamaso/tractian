@@ -26,13 +26,13 @@ export function Item({ data }){
       <View style={styles.container}>
         <View style={styles.areaImg}>
           <Image
-            source={img}//source={{uri:data.image}}
+            source={{uri:data.image}}//source={{uri:data.image}}
             style={styles.image}
           />  
         </View>
         <View style={styles.areaTxt}>
           <Text style={styles.title}>
-            {data.title}
+            {data.name}
           </Text>
           <Text style={styles.text}>
             Modelo: {data.model}
@@ -41,7 +41,7 @@ export function Item({ data }){
             Status: {data.status} 
           </Text>
           <Text style={styles.text}> 
-            Sensor: {data.sensor} 
+            Sensor: {data.sensors} 
           </Text>          
         </View>
       </View>
