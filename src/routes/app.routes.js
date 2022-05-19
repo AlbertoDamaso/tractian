@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import { Home } from '../screens/Home';
+import { Status } from '../screens/Status';
 import { CustomDrawer } from '../components/CustomDrawer';
 import { theme } from '../global/styles/theme';
 
@@ -51,7 +52,13 @@ export function AppRoutes() {
           ),
         }}
       />   
-      
+      <AppDrawer.Screen 
+        name="Status" 
+        component={Status}
+        options={{
+          drawerLabel: () => null
+        }}
+      />       
                  
     </AppDrawer.Navigator>
     );

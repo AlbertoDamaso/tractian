@@ -6,10 +6,10 @@ import {
 
 import { AuthRoutes } from './auth.routes';
 import { AppRoutes } from './app.routes';
-// import { AuthContext } from "../contexts/auth";
+ import { AuthContext } from "../contexts/auth";
 
 export function Routes() {
-  //const { signed, loading } = useContext(AuthContext);
+  const { signed } = useContext(AuthContext);
 //   if(loading){
 //     return (
 //       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -19,7 +19,7 @@ export function Routes() {
 //   }
 
   return(
-    <AuthRoutes/>
+    signed ? <AppRoutes/> : <AuthRoutes/>
   )
 
 }

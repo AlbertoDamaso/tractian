@@ -7,26 +7,18 @@ import {
 
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 
-// import { AuthContext } from '../../contexts/auth';
-//import { ImgProfile } from '../ImgProfile';
+import { AuthContext } from '../../contexts/auth';
 import { styles } from './styles';
-import { useNavigation } from '@react-navigation/native';
 
 export function CustomDrawer(props) {
-    // const { signOut } = useContext(AuthContext);
-    const navigation = useNavigation();
-
-    function handleSignOut(){
-      navigation.navigate('SignIn');
-    }
+  const { user, signOut } = useContext(AuthContext);
 
   return (
     <DrawerContentScrollView {...props}>
         <View style={styles.container}>
-            {/* <ImgProfile/> */}
 
             <Text style={styles.title}>
-               Alberto
+               {user && user.name}
             </Text>
 
         </View>
@@ -38,7 +30,7 @@ export function CustomDrawer(props) {
         <DrawerItem
             {...props}
             label="Sair"
-            style={{marginHorizontal: 20}}
+            style={{marginTop: -30, marginHorizontal: 20}}
             labelStyle={{fontSize: 19, fontWeight: 'bold', color:"#f1f1f1", marginLeft: -25}}
             icon={() =>
               <FontAwesome5
@@ -47,8 +39,7 @@ export function CustomDrawer(props) {
                 color="#f1f1f1"
               />
             }
-            // onPress={ () => signOut() }
-            onPress={handleSignOut}
+            onPress={ () => signOut() }
         />
     </DrawerContentScrollView>
   );
