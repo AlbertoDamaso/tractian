@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   View,
   SafeAreaView
@@ -10,21 +10,25 @@ import { ListAssets } from '../../components/ListAssets';
 import { styles } from './styles';
 import api from '../../services/api';
 import { AuthContext } from '../../contexts/auth';
+import { Value } from 'react-native-reanimated';
 
 export function Home() {
   const { user } = useContext(AuthContext);
   const unitId = user && user.unitId;
-  const [motor, setMotor] = useState(''); 
+  const [findMotor, setFindMotor] = useState(null);
+  const [allMotor, setAllMotor] = useState(null);
+  const [motor, setMotor] = useState(null); 
 
-  async function listMotor(){
-    try{
-      const resp = await api.get('/assets');//`/assets/:${unitId}`
+    async function listMotor(){
+      const resp = await api.get('/assets');
+      setAllMotor(resp.data);
       setMotor(resp.data);
-    }catch(error){
-      alert('ERROR: '+ error);
+      setFindMotor(allMotor.find( ({ unitId }) =>{ unitId === unitId }));
+
+      console.log(findMotor);
+
     }
-  }
-  listMotor();
+    listMotor();
 
   return (
     <View style={styles.container}>

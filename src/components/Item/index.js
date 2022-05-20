@@ -9,8 +9,6 @@ import { useNavigation } from '@react-navigation/native';
 
 import { styles } from './styles';
 
-import img from '../../assets/motor1.png';
-
 export function Item({ data }){
   const navigation = useNavigation();
 

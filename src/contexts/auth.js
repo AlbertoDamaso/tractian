@@ -1,37 +1,53 @@
 import React, { useState, createContext } from 'react';
 import api from '../services/api';
-import { useNavigation } from '@react-navigation/native';
 
 export const AuthContext = createContext({});
 
 function AuthProvider({ children }){
-    const navigation = useNavigation();
-
-    const [user, setUser] = useState({});
+    const [findUser, setFindUser] = useState(null);
+    const [allUser, setAllUser] = useState(null);
+    const [user, setUser] = useState(null);
     const [loadingAuth, setLoadingAuth] = useState(false);
 
     async function signIn(email){
-        if(email !== ''){
-            try{
-                const resp = await api.get('/users/1');
-                setUser({
-                    id:resp.data.id,
-                    email:resp.data.email,
-                    name: resp.data.name,
-                    unitId: resp.data.unitId,
-                    companyId: resp.data.companyId
-                });
-                navigation.navigate('AppRoutes');
-            }
-            catch(error){
-                alert('ERROR: '+ error);
-                setLoadingAuth(false);
-            }
-        }else{
-            alert('Digite um e-mail valido!');
-            setLoadingAuth(false);
+
+        if (email == ''){
+            alert("Digite um e-mail valido!");
+            setUser(null);
             return;
-        }
+        }else{
+                try{
+                    const resp = await api.get('/users')
+                    setAllUser(resp.data);
+                    
+                    setFindUser(allUser.find( ({ email }) => email === email ));
+                    const findId =  findUser.id;
+
+                    //Original part
+                    setLoadingAuth(true);
+                    await api.get(`/users/${findId}`)// buscar o certo antes
+                    .then(async (value) =>{
+                        let data ={
+                            id: value.data.id,
+                            email:value.data.email,
+                            name: value.data.name,
+                            unitId: value.data.unitId,
+                            companyId: value.data.companyId
+                        };
+                        setUser(data);
+                        setLoadingAuth(false);
+                    })
+                    .catch((error) => {
+                        alert(error.code);
+                        setLoadingAuth(false);
+                    })
+                }catch(error){
+                    alert(error);
+                    setLoadingAuth(false);
+                }
+            }
+
+
     }
 
     async function signOut(){
